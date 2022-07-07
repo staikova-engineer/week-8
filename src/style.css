@@ -1,5 +1,6 @@
 body {
   font-family: "Courier New", Courier, monospace;
+  color: #70757a;
 }
 
 a {
@@ -64,8 +65,44 @@ footer {
   padding: 0;
 }
 
+.weather-description {
+  margin: auto 0;
+}
+
 .temp-number .active {
   color: #000;
   cursor: default;
   text-decoration: none;
+}
+
+.desc,
+.city,
+.number {
+  color: #000;
+}
+
+.city {
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.desc {
+  font-weight: bolder;
+  font-size: 18px;
+}
+
+.weather-forecast-day1 {
+  text-align: center;
+}
+
+.weather-forecast-day1-date {
+  font-size: 14px;
+}
+
+.weather-forecast-day1-img {
+  width: 36px;
+}
+
+.weather-forecast-day1-temperatures {
+  font-size: 11px;
 }

@@ -37,8 +37,8 @@
             </div>
           </div>
         </form>
-        <div class="row align-items-center">
-          <div class="col">
+        <div class="row weather-description align-items-center">
+          <div class="col-auto">
             <div class="temp-number">
               <img src="#" alt="#" class="icon" /><span
                 ><strong class="number"></strong
@@ -52,6 +52,7 @@
           <div class="col">
             <div class="temp-char">
               <ul>
+                <li><div class="desc"></div></li>
                 <li>Wind: <span class="wind"></span> km/h</li>
                 <li>Humidity: <span class="humidity"></span>%</li>
               </ul>
@@ -61,7 +62,20 @@
             <div class="city-desc">
               <div class="city"></div>
               <div>Last updated on <span class="date-time"></span></div>
-              <div class="desc"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-center weather-forecast">
+          <div class="col-2 weather-forecast-day1">
+            <div class="weather-forecast-day1-date">Thu</div>
+            <img
+              src="http://openweathermap.org/img/wn/02d@2x.png"
+              alt="Weather forecast image"
+              class="weather-forecast-day1-img"
+            />
+            <div class="weather-forecast-day1-temperatures">
+              <span class="weather-forecast-day1-temp-max">18º</span>
+              <span class="weather-forecast-day1-temp-min">12º</span>
             </div>
           </div>
         </div>

@@ -48,6 +48,36 @@ function showTemp(response) {
   iconElement.setAttribute("alt", `response.data.weather[0].main`);
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector(".weather-forecast");
+
+  let days = ["Thu", "Fri", "Sat"];
+
+  let forecastHTML = `<div class="row align-items-center">`;
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+            <div class="col-2 weather-forecast-day1">
+              <div class="weather-forecast-day1-date">${day}</div>
+              <img
+              src="http://openweathermap.org/img/wn/02d@2x.png"
+              alt="Weather forecast image"
+              class="weather-forecast-day1-img"
+              />
+            <div class="weather-forecast-day1-temperatures">
+              <span class="weather-forecast-day1-temp-max">18º</span>
+              <span class="weather-forecast-day1-temp-min">12º</span>
+            </div>
+          </div>
+      `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function displayFahrenTemp(event) {
   event.preventDefault();
   let tempElement = document.querySelector(".number");
@@ -85,7 +115,8 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 
-search("Tallinn");
-
 let form = document.querySelector(".search-form");
 form.addEventListener("submit", handleSubmit);
+
+search("Tallinn");
+displayForecast();

@@ -24,39 +24,9 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function getForcast(coordinates) {
-  let apiKey = `f37ae7e0407a8ea1d736a1fcc1e6133a`;
-  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}$units=metric`;
-  console.log(apiUrl);
-}
+function displayForecast(response) {
+  console.log(response.data.daily);
 
-function showTemp(response) {
-  let cityElement = document.querySelector(".city");
-  let tempElement = document.querySelector(".number");
-  let descriptionElement = document.querySelector(".desc");
-  let humidityElement = document.querySelector(".humidity");
-  let windElement = document.querySelector(".wind");
-  let dateElement = document.querySelector(".date-time");
-  let iconElement = document.querySelector(".icon");
-
-  celsiusTemp = response.data.main.temp;
-
-  cityElement.innerHTML = response.data.name;
-  tempElement.innerHTML = Math.round(celsiusTemp);
-  descriptionElement.innerHTML = response.data.weather[0].main;
-  humidityElement.innerHTML = response.data.main.humidity;
-  windElement.innerHTML = Math.round(response.data.wind.speed);
-  dateElement.innerHTML = formatDate(response.data.dt * 1000);
-  iconElement.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
-  iconElement.setAttribute("alt", `response.data.weather[0].main`);
-
-  getForcast(response.data.coord);
-}
-
-function displayForecast() {
   let forecastElement = document.querySelector(".weather-forecast");
 
   let days = ["Thu", "Fri", "Sat"];
@@ -84,6 +54,39 @@ function displayForecast() {
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
+}
+
+function getForcast(coordinates) {
+  let apiKey = `f37ae7e0407a8ea1d736a1fcc1e6133a`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function showTemp(response) {
+  let cityElement = document.querySelector(".city");
+  let tempElement = document.querySelector(".number");
+  let descriptionElement = document.querySelector(".desc");
+  let humidityElement = document.querySelector(".humidity");
+  let windElement = document.querySelector(".wind");
+  let dateElement = document.querySelector(".date-time");
+  let iconElement = document.querySelector(".icon");
+
+  celsiusTemp = response.data.main.temp;
+
+  cityElement.innerHTML = response.data.name;
+  tempElement.innerHTML = Math.round(celsiusTemp);
+  descriptionElement.innerHTML = response.data.weather[0].main;
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", `response.data.weather[0].main`);
+
+  getForcast(response.data.coord);
 }
 
 function displayFahrenTemp(event) {

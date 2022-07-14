@@ -78,6 +78,7 @@ function getForcast(coordinates) {
 }
 
 function showTemp(response) {
+  console.log(response.data);
   let cityElement = document.querySelector(".city");
   let tempElement = document.querySelector(".number");
   let descriptionElement = document.querySelector(".desc");
@@ -144,4 +145,3 @@ let form = document.querySelector(".search-form");
 form.addEventListener("submit", handleSubmit);
 
 search("Tallinn");
-displayForecast();
